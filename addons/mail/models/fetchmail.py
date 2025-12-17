@@ -304,7 +304,7 @@ odoo_mailgate: "|/path/to/odoo-mailgate.py --host=localhost -u %(uid)d -p PASSWO
                 server.error_message = False
             except Exception as e:  # noqa: BLE001
                 result_exception = e
-                _logger.info("General failure when trying to fetch mail from %s server %s.", *server_type_and_name, exc_info=True)
+                _logger.warning("General failure when trying to fetch mail from %s server %s.", *server_type_and_name, exc_info=True)
                 if not server.error_date:
                     server.error_date = fields.Datetime.now()
                     server.error_message = exception_to_unicode(e)
